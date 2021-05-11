@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20210509-01
+      author: taleabayev
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: 'tale'
+              - column:
+                  name: password
+                  value: 'password'
+              - column:
+                  name: create_date
+                  valueDate: now()

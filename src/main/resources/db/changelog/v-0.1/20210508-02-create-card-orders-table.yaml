@@ -1,0 +1,54 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20210508-01
+      author: taleabayev
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    unique: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: card_type
+                  type: VARCHAR(50)
+              - column:
+                  name: card_holder_name
+                  type: VARCHAR(100)
+              - column:
+                  name: card_period
+                  type: INTEGER
+              - column:
+                  name: codeword
+                  type: VARCHAR(50)
+              - column:
+                  name: urgent
+                  type: boolean
+              - column:
+                  name: submitted
+                  type: boolean
+              - column:
+                  name: update_date
+                  type: datetime
+              - column:
+                  name: create_date
+                  type: datetime
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+            tableName: card_orders
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: card_orders
+            constraintName: fk_users_id
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true

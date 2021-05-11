@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: ${ACTIVE_PROFILE:local}
+    include:
+      - db
+      - common
+application:
+  security:
+    authentication:
+      jwt:
+        secret: VGhpcyBpcyAgc2VjcmV0IGtleSBmb3IgY2FyZCAgb3JkZXIuIA==
+        token-validity-in-seconds: 9000
+logging:
+  level:
+    root: INFO
+    org.springframework: WARN

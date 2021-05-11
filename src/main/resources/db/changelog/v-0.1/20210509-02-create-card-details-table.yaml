@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20210509-02
+      author: taleabayev
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: card_number
+                  type: VARCHAR(50)
+              - column:
+                  name: account_number
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: create_date
+                  type: datetime
+              - column:
+                  name: card_order_id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+            tableName: card_details
+        - addForeignKeyConstraint:
+            baseColumnNames: card_order_id
+            baseTableName: card_details
+            constraintName: fk_card_order_id
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: card_orders
+            validate: true
